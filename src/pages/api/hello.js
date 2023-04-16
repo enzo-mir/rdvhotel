@@ -9,7 +9,7 @@ let connectDb = mysql.createConnection({
 
 export default function handler(req, res) {
   connectDb.connect(function (err) {
-    if (err) res.status(200).json({ error: err });
+    if (err) res.json({ error: err });
     res.status(200).json({ connected: "connected" });
   });
 }
