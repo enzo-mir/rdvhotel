@@ -1,5 +1,15 @@
-// Next.js API route support: https://nextjs.org/docs/api-routes/introduction
+import mysql from "mysql";
+
+let connectDb = mysql.createConnection({
+  host: "enzomrg.com",
+  user: "uqkn2942_enzmrg",
+  password: "5()Amg9709",
+  database: "uqkn2942_enzmrg",
+});
 
 export default function handler(req, res) {
-  res.status(200).json({ name: 'John' })
+  connectDb.connect(function (err) {
+    if (err) res.status(200).json({ error: err });
+    res.status(200).json({ connected: "connected" });
+  });
 }
